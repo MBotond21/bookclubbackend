@@ -13,7 +13,10 @@ export class MembersService {
 
   create(createMemberDto: CreateMemberDto) {
     return this.db.members.create({
-      data: createMemberDto
+      data: {
+        ...createMemberDto,
+        birth_date: new Date(createMemberDto.birth_date)
+      }
     });
   }
 
